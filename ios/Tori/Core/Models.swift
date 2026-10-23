@@ -11,6 +11,24 @@ enum Lang: String, Codable, CaseIterable, Identifiable, Sendable {
     var label: String { self == .vi ? "Tiếng Việt" : "English" }
 }
 
+/// Which textbook ordering the vocabulary follows: Tori's own chapters (the
+/// default) or the Minna no Nihongo lessons. Words that exist only in Minna
+/// (category "Minna no Nihongo") belong to the Minna book alone.
+enum Book: String, Codable, CaseIterable, Identifiable, Sendable {
+    case tori, minna
+    var id: String { rawValue }
+
+    /// `category` of the words imported from Minna no Nihongo with no Tori chapter.
+    static let minnaOnlyCategory = "Minna no Nihongo"
+
+    func includes(_ v: VocabEntry) -> Bool {
+        switch self {
+        case .tori: v.category != Book.minnaOnlyCategory
+        case .minna: v.minna != nil
+        }
+    }
+}
+
 /// `{ vi, en }` content field. `en` is "" on most entries, so lookups fall
 /// back to Vietnamese on an empty string (same as `localize()` in i18n.ts).
 struct LocalizedText: Codable, Hashable, Sendable {

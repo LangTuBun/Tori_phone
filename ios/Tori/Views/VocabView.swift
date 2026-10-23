@@ -12,18 +12,23 @@ struct VocabView: View {
     @State private var selected: VocabEntry?
 
     var body: some View {
-        let vocab = data.vocab(settings.level)
-        let groups = Array(Set(vocab.map(Japanese.groupKey))).sorted(by: Japanese.compareGroupKeys)
+        let book = settings.book
+        let vocab = data.vocab(settings.level, book: book)
+        let groups = Array(Set(vocab.map { Japanese.groupKey($0, book: book) })).sorted(by: Japanese.compareGroupKeys)
         let posList = Array(Set(vocab.map(\.pos))).sorted()
-        let filtered = Search.vocab(vocab, query: query, group: group, pos: pos, romaji: data.romaji(of:))
+        let matches = Search.vocab(vocab, query: query, group: group, pos: pos,
+                                   groupKey: { Japanese.groupKey($0, book: book) }, romaji: data.romaji(of:))
+        // Searching shows a word once even if the list holds it spelled two ways.
+        let filtered = query.trimmingCharacters(in: .whitespaces).isEmpty ? matches : Search.collapsingVariants(matches)
 
         NavigationStack {
             ScrollView {
                 LazyVStack(spacing: 8) {
-                    LevelPicker().padding(.bottom, 4)
+                    LevelPicker()
+                    BookPicker().padding(.bottom, 4)
 
                     HStack(spacing: 8) {
-                        filterMenu(title: group.map(groupLabel) ?? settings.t("ios.vocab.allGroups"), active: group != nil) {
+                        filterMenu(title: group.map(groupLabel) ?? (book == .minna ? settings.t("vocab.allLessons") : settings.t("ios.vocab.allGroups")), active: group != nil) {
                             Button(settings.t("common.all")) { group = nil }
                             ForEach(groups, id: \.self) { g in Button(groupLabel(g)) { group = g } }
                         }
@@ -50,17 +55,19 @@ struct VocabView: View {
             .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always),
                         prompt: settings.t("vocab.searchPlaceholder"))
             .onChange(of: settings.level) { group = nil; pos = nil }
+            .onChange(of: settings.book) { group = nil }
             .sheet(item: $selected) { v in
-                VocabDetailView(entry: v)
+                VocabDetailView(entry: v, list: filtered) { selected = $0 }
                     .presentationDetents([.large])
                     .presentationCornerRadius(Radius.sheet)
-                    .presentationBackground(.ultraThinMaterial)
+                    .toriSheetBackground()
             }
         }
     }
 
     private func groupLabel(_ g: String) -> String {
-        g == "?" ? settings.t("vocab.unknownChapter") : Japanese.isChapterKey(g) ? settings.t("common.chapterN", ["n": g]) : g
+        if settings.book == .minna { return settings.t("vocab.lessonN", ["n": g]) }
+        return g == "?" ? settings.t("vocab.unknownChapter") : Japanese.isChapterKey(g) ? settings.t("common.chapterN", ["n": g]) : g
     }
 
     private func filterMenu<Content: View>(title: String, active: Bool, @ViewBuilder content: () -> Content) -> some View {
@@ -90,11 +97,15 @@ private struct VocabRow: View {
         HStack(spacing: 10) {
             Button(action: onTap) {
                 HStack(spacing: 12) {
-                    FuriganaWord(kanji: entry.kanji, kana: entry.kana, size: 22)
-                        .frame(minWidth: 70, alignment: .leading)
-                    Text(settings.text(entry.meanings))
-                        .font(.footnote).foregroundStyle(p.muted)
-                        .lineLimit(2).multilineTextAlignment(.leading)
+                    VStack(alignment: .leading, spacing: 3) {
+                        HStack(alignment: .center, spacing: 8) {
+                            FuriganaWord(kanji: entry.kanji, kana: entry.kana, size: 22)
+                            PitchGraphView(kana: entry.kana, pitch: entry.pitch)
+                        }
+                        Text(settings.text(entry.meanings))
+                            .font(.footnote).foregroundStyle(p.muted)
+                            .lineLimit(2).multilineTextAlignment(.leading)
+                    }
                     Spacer(minLength: 4)
                     VStack(alignment: .trailing, spacing: 4) {
                         PosTag(pos: entry.pos)
@@ -129,6 +140,8 @@ private struct VocabRow: View {
 
 struct VocabDetailView: View {
     let entry: VocabEntry
+    var list: [VocabEntry] = []
+    var select: (VocabEntry) -> Void = { _ in }
     @Environment(SettingsStore.self) private var settings
     @Environment(DataStore.self) private var data
     @Environment(\.palette) private var p
@@ -154,7 +167,7 @@ struct VocabDetailView: View {
                 }
 
                 VStack(spacing: 10) {
-                    FuriganaWord(kanji: entry.kanji, kana: entry.kana, size: 52)
+                    FuriganaWord(kanji: entry.kanji, kana: entry.kana, size: 52, tappable: true)
                     Text(settings.text(entry.meanings)).font(.title3.weight(.semibold)).multilineTextAlignment(.center)
                     HStack(spacing: 14) {
                         SpeakButton(text: entry.kana)
@@ -170,10 +183,7 @@ struct VocabDetailView: View {
                     ForEach(Array(entry.examples.enumerated()), id: \.offset) { _, ex in
                         HStack(alignment: .top, spacing: 10) {
                             VStack(alignment: .leading, spacing: 4) {
-                                Text(ex.ja).jp(17, weight: .medium)
-                                if let kana = ex.kana, !kana.isEmpty {
-                                    Text(kana).jp(12, weight: .regular).foregroundStyle(p.muted)
-                                }
+                                FuriganaText(kanji: ex.ja, kana: ex.kana, size: 17, weight: .medium, tappable: true)
                                 Text(settings.text(ex.translation)).font(.footnote).foregroundStyle(p.muted)
                             }
                             Spacer(minLength: 0)
@@ -199,6 +209,12 @@ struct VocabDetailView: View {
                 }
             }
             .padding(16)
+        }
+        .id(entry.id)
+        .safeAreaInset(edge: .bottom) {
+            if let pg = list.pager(around: entry, select: select) {
+                DetailPager(position: pg.position, total: list.count, prev: pg.prev, next: pg.next)
+            }
         }
     }
 }

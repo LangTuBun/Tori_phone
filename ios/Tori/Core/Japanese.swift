@@ -70,6 +70,11 @@ enum Japanese {
         return v.category ?? "?"
     }
 
+    /// Minna lesson number in the Minna book, otherwise `groupKey`.
+    static func groupKey(_ v: VocabEntry, book: Book) -> String {
+        book == .minna ? String(v.minna ?? 0) : groupKey(v)
+    }
+
     static func isChapterKey(_ k: String) -> Bool { !k.isEmpty && k != "?" && Int(k) != nil }
 
     /// Chapter numbers first (numeric), then category names, "?" last.

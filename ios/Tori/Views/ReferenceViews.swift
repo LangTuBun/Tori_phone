@@ -292,12 +292,12 @@ struct HomophonesView: View {
             .sheet(item: $selected) { g in
                 HomophoneSheet(group: g, hidden: false, next: nil)
                     .presentationDetents([.medium, .large]).presentationCornerRadius(Radius.sheet)
-                    .presentationBackground(.ultraThinMaterial)
+                    .toriSheetBackground()
             }
             .sheet(isPresented: $challenge) {
                 ChallengeSheet(groups: groups)
                     .presentationDetents([.medium, .large]).presentationCornerRadius(Radius.sheet)
-                    .presentationBackground(.ultraThinMaterial)
+                    .toriSheetBackground()
             }
         }
     }
@@ -391,11 +391,28 @@ struct SettingsView: View {
                         LevelPicker()
                         Text(settings.t("settings.levelDescription")).font(.caption).foregroundStyle(p.muted)
                     }
+                    card(settings.t("vocab.book")) {
+                        BookPicker()
+                        Text(settings.l("Mặc định là các chương của Tori. Chọn Minna no Nihongo để học theo từng bài của giáo trình đó; từ chỉ có trong Minna chỉ hiện ở đây.",
+                                        "Tori's own chapters by default. Pick Minna no Nihongo to study by that textbook's lessons; words that exist only in Minna show up there alone."))
+                            .font(.caption).foregroundStyle(p.muted)
+                    }
                     card(settings.t("ios.settings.theme")) {
-                        HStack(spacing: 10) {
-                            ForEach(ThemeID.allCases) { id in themeSwatch(id) }
+                        GlassSegmented(options: [(BackgroundMode.gradient, "Gradient"),
+                                                 (BackgroundMode.scene, settings.l("Hình nền", "Background"))],
+                                       selection: Binding(get: { settings.backgroundMode }, set: { settings.backgroundMode = $0 }))
+                            .accessibilityIdentifier("settings.backgroundMode")
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 12) {
+                                ForEach(settings.backgroundMode == .scene ? ThemeID.scenes : ThemeID.gradients) { id in themeThumb(id) }
+                            }
+                            .padding(.vertical, 2)
                         }
-                        Text(settings.t("ios.settings.themeDescription")).font(.caption).foregroundStyle(p.muted)
+                        .scrollClipDisabled()
+                        Text(settings.backgroundMode == .scene
+                             ? settings.l("Hình nền có chi tiết để kính khúc xạ. Chọn một cảnh bạn thích.", "Backgrounds give the glass something to refract. Pick a scene you like.")
+                             : settings.t("ios.settings.themeDescription"))
+                            .font(.caption).foregroundStyle(p.muted)
                     }
                     card(settings.t("settings.voiceTitle")) {
                         HStack {
@@ -433,22 +450,26 @@ struct SettingsView: View {
         .glass(radius: Radius.card, shadowed: false)
     }
 
-    private func themeSwatch(_ id: ThemeID) -> some View {
-        let pal = Palette.make(id)
+    /// One gallery card: the background itself, with a sample glass chip on it.
+    private func themeThumb(_ id: ThemeID) -> some View {
         let on = settings.theme == id
+        let pal = Palette.make(id)
+        let shape = RoundedRectangle(cornerRadius: 20, style: .continuous)
         return Button { withAnimation(.easeOut(duration: 0.25)) { settings.theme = id } } label: {
             VStack(spacing: 8) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 12, style: .continuous).fill(pal.bg)
-                    Circle().fill(pal.blobs[0]).frame(width: 30).offset(x: -14, y: -8)
-                    Circle().fill(pal.blobs[1]).frame(width: 26).offset(x: 16, y: 4)
-                    Circle().fill(pal.accent).frame(width: 14).offset(x: 0, y: 12)
-                }
-                .frame(height: 56)
-                .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).strokeBorder(on ? p.accent : p.hairline, lineWidth: on ? 2 : 1))
+                ThemePreview(theme: id)
+                    .frame(width: 112, height: 196)
+                    .overlay(alignment: .bottom) {
+                        Text("Aa").font(.headline).foregroundStyle(pal.text)
+                            .frame(width: 84, height: 40)
+                            .background(.ultraThinMaterial, in: Capsule())
+                            .overlay(Capsule().strokeBorder(pal.edge, lineWidth: 1))
+                            .padding(.bottom, 14)
+                    }
+                    .clipShape(shape)
+                    .overlay(shape.strokeBorder(on ? p.accent : p.hairline, lineWidth: on ? 3 : 1))
                 Text(settings.t("ios.theme.\(id.rawValue)")).font(.caption.weight(on ? .bold : .medium))
             }
-            .frame(maxWidth: .infinity)
         }
         .buttonStyle(.plain)
         .accessibilityIdentifier("settings.theme.\(id.rawValue)")

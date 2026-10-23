@@ -9,7 +9,6 @@ struct ReviewView: View {
 
     @State private var model = ReviewModel()
     @State private var group: String?
-    @State private var minnaLesson: Int?
     @State private var kanjiChapter: Int?
     @State private var pos: String?
     @State private var count = 20       // 0 means "all"
@@ -25,16 +24,16 @@ struct ReviewView: View {
             }
             .toriScreen(title: settings.t("review.title"))
             .navigationBarTitleDisplayMode(model.phase == .setup ? .large : .inline)
-            .onChange(of: settings.level) { group = nil; minnaLesson = nil; kanjiChapter = nil; pos = nil }
+            .onChange(of: settings.level) { group = nil; kanjiChapter = nil; pos = nil }
+            .onChange(of: settings.book) { group = nil }
         }
     }
 
     // MARK: Pools
 
     private var vocabPool: [VocabEntry] {
-        data.vocab(settings.level).filter {
-            (group == nil || Japanese.groupKey($0) == group)
-                && (minnaLesson == nil || $0.minna == minnaLesson)
+        data.vocab(settings.level, book: settings.book).filter {
+            (group == nil || Japanese.groupKey($0, book: settings.book) == group)
                 && (pos == nil || $0.pos == pos)
         }
     }
@@ -72,9 +71,9 @@ struct ReviewView: View {
 
     private var setup: some View {
         let isVocab = model.mode == .vocab
-        let vocab = data.vocab(settings.level)
-        let groups = Array(Set(vocab.map(Japanese.groupKey))).sorted(by: Japanese.compareGroupKeys)
-        let minnaLessons = Array(Set(vocab.compactMap(\.minna))).sorted()
+        let book = settings.book
+        let vocab = data.vocab(settings.level, book: book)
+        let groups = Array(Set(vocab.map { Japanese.groupKey($0, book: book) })).sorted(by: Japanese.compareGroupKeys)
         let posList = Array(Set(vocab.map(\.pos))).sorted()
         let kanjiChapters = Array(Set(data.kanjiChapters(settings.level).map(\.chapter.chapter))).sorted()
         let poolIDs = isVocab ? vocabPool.map(\.id) : kanjiPool.map(\.id)
@@ -85,6 +84,7 @@ struct ReviewView: View {
         return ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 LevelPicker()
+                if isVocab { BookPicker() }
                 GlassSegmented(options: [(ReviewModel.Mode.vocab, settings.t("review.vocabTab")),
                                          (ReviewModel.Mode.kanji, settings.t("review.kanjiTab") + " 漢字")],
                                selection: $model.mode)
@@ -92,15 +92,7 @@ struct ReviewView: View {
 
                 VStack(alignment: .leading, spacing: 18) {
                     if isVocab {
-                        if !minnaLessons.isEmpty {
-                            chipSection(settings.t("review.minnaLabel")) {
-                                Chip(title: settings.t("common.all"), selected: minnaLesson == nil) { minnaLesson = nil }
-                                ForEach(minnaLessons, id: \.self) { n in
-                                    Chip(title: settings.t("vocab.lessonN", ["n": n]), selected: minnaLesson == n) { minnaLesson = minnaLesson == n ? nil : n }
-                                }
-                            }
-                        }
-                        chipSection(settings.t("review.chapterCategoryLabel")) {
+                        chipSection(book == .minna ? settings.t("review.minnaLabel") : settings.t("review.chapterCategoryLabel")) {
                             Chip(title: settings.t("common.all"), selected: group == nil) { group = nil }
                             ForEach(groups, id: \.self) { g in
                                 Chip(title: groupLabel(g), selected: group == g) { group = group == g ? nil : g }
@@ -154,7 +146,8 @@ struct ReviewView: View {
     }
 
     private func groupLabel(_ g: String) -> String {
-        g == "?" ? settings.t("vocab.unknownChapter") : Japanese.isChapterKey(g) ? settings.t("common.chapterN", ["n": g]) : g
+        if settings.book == .minna { return settings.t("vocab.lessonN", ["n": g]) }
+        return g == "?" ? settings.t("vocab.unknownChapter") : Japanese.isChapterKey(g) ? settings.t("common.chapterN", ["n": g]) : g
     }
 
     private func chipSection<Content: View>(_ label: String, @ViewBuilder content: () -> Content) -> some View {

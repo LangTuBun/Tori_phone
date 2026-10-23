@@ -8,17 +8,36 @@ enum Search {
     }
 
     static func vocab(_ list: [VocabEntry], query: String, group: String?, pos: String?,
+                      groupKey: (VocabEntry) -> String = { Japanese.groupKey($0) },
                       romaji: (VocabEntry) -> String) -> [VocabEntry] {
         let q = query.trimmingCharacters(in: .whitespacesAndNewlines)
         let folded = fold(q)
         return list.filter { v in
-            if let group, Japanese.groupKey(v) != group { return false }
+            if let group, groupKey(v) != group { return false }
             if let pos, v.pos != pos { return false }
             if q.isEmpty { return true }
             return v.kanji.contains(q) || v.kana.contains(q)
                 || romaji(v).contains(q.lowercased())
                 || fold(v.meanings.vi).contains(folded) || fold(v.meanings.en).contains(folded)
         }
+    }
+
+    /// The same word written two ways shows up twice when searching: the reading
+    /// and meaning are identical and one entry is kana only (うそ / 嘘). Those
+    /// collapse to the entry with kanji. Anything with a different meaning, or
+    /// two different kanji spellings (暑い / 熱い, 亡くなる / なくなる), stays apart.
+    static func collapsingVariants(_ list: [VocabEntry]) -> [VocabEntry] {
+        func clean(_ s: String) -> String { s.filter { !"（）() ～〜\u{3000}".contains($0) } }
+        func key(_ v: VocabEntry) -> String {
+            let stripped = v.meanings.vi
+                .replacingOccurrences(of: "\\([^)]*\\)|（[^）]*）", with: "", options: .regularExpression)
+            let items = stripped.split(whereSeparator: { ",;/、，；".contains($0) })
+                .map { fold(clean(String($0))) }.filter { !$0.isEmpty }.sorted()
+            return clean(v.kana) + "|" + items.joined(separator: ",")
+        }
+        var hasKanji = Set<String>()
+        for v in list where Furigana.hasKanji(v.kanji) { hasKanji.insert(key(v)) }
+        return list.filter { v in Furigana.hasKanji(v.kanji) || !hasKanji.contains(key(v)) }
     }
 
     static func grammar(_ list: [GrammarPoint], query: String) -> [GrammarPoint] {

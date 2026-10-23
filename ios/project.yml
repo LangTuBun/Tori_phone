@@ -7,7 +7,7 @@ options:
 settings:
   base:
     SWIFT_VERSION: "5.0"
-    MARKETING_VERSION: "0.0.1"
+    MARKETING_VERSION: "0.0.7"
     CURRENT_PROJECT_VERSION: "1"
 targets:
   Tori:
@@ -23,16 +23,25 @@ targets:
         type: folder
       - path: ../src/locales
         type: folder
+      - path: ../src/data/kanjivg.json
+      - path: ../src/data/hanviet-dictionary.json
+      - path: ../src/data/kanji-readings.json
+      - path: ../src/data/radicals.json
+      - path: ../src/data/onyomi-rules.json
+      - path: ../src/data/kanjium-accents.tsv
+      - path: ../src/data/furigana-map.json
+      - path: ../src/data/radical-names.json
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.tori.app
-        TARGETED_DEVICE_FAMILY: "1"
+        TARGETED_DEVICE_FAMILY: "1,2"
         GENERATE_INFOPLIST_FILE: YES
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         INFOPLIST_KEY_CFBundleDisplayName: Tori
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.education
   ToriTests:
     type: bundle.unit-test

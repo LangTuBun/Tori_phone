@@ -82,7 +82,7 @@ struct GrammarView: View {
                 ChapterSummarySheet(category: c)
                     .presentationDetents([.medium, .large])
                     .presentationCornerRadius(Radius.sheet)
-                    .presentationBackground(.ultraThinMaterial)
+                    .toriSheetBackground()
             }
         }
     }

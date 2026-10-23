@@ -24,7 +24,7 @@ struct HomeView: View {
     private static let weekdays = ["日", "月", "火", "水", "木", "金", "土"]
 
     var body: some View {
-        let ids = data.vocab(settings.level).map(\.id)
+        let ids = data.vocab(settings.level, book: settings.book).map(\.id)
         let due = progress.dueCards(in: ids).count
         let learnedCount = ids.filter { progress.cards[$0] != nil && progress.cards[$0]?.state != .new }.count
         let grammar = data.grammar(settings.level)
@@ -35,6 +35,7 @@ struct HomeView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     header
                     LevelPicker()
+                    BookPicker()
 
                     VStack(alignment: .leading, spacing: 14) {
                         HStack(alignment: .firstTextBaseline, spacing: 8) {
