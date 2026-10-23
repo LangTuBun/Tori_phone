@@ -34,3 +34,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# iOS (Xcode)
+ios/build/
+ios/DerivedData/
+xcuserdata/
+*.xcuserstate
+.DS_Store

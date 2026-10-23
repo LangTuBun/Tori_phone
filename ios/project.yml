@@ -1,0 +1,66 @@
+name: Tori
+options:
+  bundleIdPrefix: com.tori
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.0.1"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  Tori:
+    type: application
+    platform: iOS
+    sources:
+      - path: Tori
+      # The web app's data and locales are bundled untouched, as folder
+      # references, so web and iOS share one source of truth.
+      - path: ../src/data/n5
+        type: folder
+      - path: ../src/data/n4
+        type: folder
+      - path: ../src/locales
+        type: folder
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.tori.app
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        INFOPLIST_KEY_CFBundleDisplayName: Tori
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.education
+  ToriTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [ToriTests]
+    dependencies:
+      - target: Tori
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.tori.app.tests
+  ToriUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [ToriUITests]
+    dependencies:
+      - target: Tori
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.tori.app.uitests
+schemes:
+  Tori:
+    build:
+      targets:
+        Tori: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets: [ToriTests, ToriUITests]

@@ -1,0 +1,661 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05A7DA93B114B4F80A70268B /* n5 in Resources */ = {isa = PBXBuildFile; fileRef = 6B3E9561C436AE8D5169AABA /* n5 */; };
+		0F23A0430477AD29195433D2 /* n4 in Resources */ = {isa = PBXBuildFile; fileRef = 69DBBBB0D21DD544F345C300 /* n4 */; };
+		1519A14353802FC6DBB837B9 /* ToriUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5073C1C357028C50CB8C097 /* ToriUITests.swift */; };
+		1B8D750455962C582A81070A /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D2C4272EDBEFB95695EA59 /* SettingsStore.swift */; };
+		1DC9F527DE4174145304D7A5 /* SRS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AAB600E6D0F0DD99301E58 /* SRS.swift */; };
+		2549F966EF724EB6A193354F /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8753059530ECAB810BB8A1E /* ReviewView.swift */; };
+		4013D792B3DD7FA7865260B3 /* ProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEEF12815219C1C2C50DFB /* ProgressStore.swift */; };
+		4099AEB65A63DE9EA9447801 /* locales in Resources */ = {isa = PBXBuildFile; fileRef = F6CC00C996E76C0057ED3A96 /* locales */; };
+		42243ED80C2653A8870C20BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C74F6FBA5F9D71C59F6B9D5C /* Assets.xcassets */; };
+		628605FC9BF9E46132FAE4DF /* GrammarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5E9C992ACBFE2F13BDE26B /* GrammarView.swift */; };
+		7224F0649FB9EF65DEE0A483 /* ContentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8A63D5A3755F3D6297021 /* ContentRepository.swift */; };
+		7408FA296C7048297F8328CE /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C756A5DA35C3923BDF875A97 /* Speaker.swift */; };
+		7C8FA0126BA96197E8BE9CB4 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F670E23B0C67989ABEDFE34 /* RootView.swift */; };
+		8E481C7A91A7F74BE26CA19F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7484B913A22203C9AFBD135 /* Models.swift */; };
+		A82487F2B72E360381D53146 /* ToriApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1CA3A7CA5C5A6184D522B3 /* ToriApp.swift */; };
+		AB2556B3E17B14A9E4FD17B9 /* ReferenceViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB74D9924DDDD2D556DFE13 /* ReferenceViews.swift */; };
+		AD8C3889F4100450892C4B84 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3F0EE71DC1C6113DFA1E95 /* Theme.swift */; };
+		B0CF3E17394EB886171965AC /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A1F980EFFEE1DFDE9D56 /* Components.swift */; };
+		B774B6DA9B1D585C6729A1A6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DD6A0002557D3827506E11 /* HomeView.swift */; };
+		BC8A866583B7A3AAC8C2B966 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993D654517F13DEE614157EC /* ReviewModel.swift */; };
+		BF3B84710A5431F76489673A /* Romaji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC5D6987A7C38471A9FCE5 /* Romaji.swift */; };
+		C3C8D3098ABF891CAE803D9F /* ContentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7934E0E37B5C80CB0FE40ED0 /* ContentTests.swift */; };
+		D0F3BCA22E227744906A323C /* CoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A312D5D0ECC0223E19F47B /* CoreTests.swift */; };
+		E2488AA6E8EB7CE242F47D24 /* VocabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF59E611D3829E623CBB330 /* VocabView.swift */; };
+		EB1F1B4802108243F4D74FD1 /* KanjiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA339362A1674ACDEC3C984 /* KanjiView.swift */; };
+		F0F37B298068752512830C56 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF769FC38BBF8208616AD937 /* Search.swift */; };
+		F135DE97B91B995F3E59F308 /* Japanese.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BA6FA4729231F6CB7C0053 /* Japanese.swift */; };
+		F50AE460C5886B03B47DD273 /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872F17C7441B59EAF8AA12E8 /* Localizer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8425ECC077B33224D329C44A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E188389952382A153401010B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF6DCDD0E07F83A0AA3B6CEE;
+			remoteInfo = Tori;
+		};
+		8452A9922CB552EE4DD01846 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E188389952382A153401010B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF6DCDD0E07F83A0AA3B6CEE;
+			remoteInfo = Tori;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		19A312D5D0ECC0223E19F47B /* CoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTests.swift; sourceTree = "<group>"; };
+		1EF59E611D3829E623CBB330 /* VocabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabView.swift; sourceTree = "<group>"; };
+		22AAB600E6D0F0DD99301E58 /* SRS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRS.swift; sourceTree = "<group>"; };
+		2A1CA3A7CA5C5A6184D522B3 /* ToriApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToriApp.swift; sourceTree = "<group>"; };
+		4E3F0EE71DC1C6113DFA1E95 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		51D2C4272EDBEFB95695EA59 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		5BB74D9924DDDD2D556DFE13 /* ReferenceViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceViews.swift; sourceTree = "<group>"; };
+		69DBBBB0D21DD544F345C300 /* n4 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = n4; path = ../src/data/n4; sourceTree = SOURCE_ROOT; };
+		6B1E334730EFD8CD1BAE7B29 /* ToriUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ToriUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B3E9561C436AE8D5169AABA /* n5 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = n5; path = ../src/data/n5; sourceTree = SOURCE_ROOT; };
+		6FA339362A1674ACDEC3C984 /* KanjiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiView.swift; sourceTree = "<group>"; };
+		7934E0E37B5C80CB0FE40ED0 /* ContentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTests.swift; sourceTree = "<group>"; };
+		7A199FA8632548CABC2A1946 /* Tori.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Tori.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F670E23B0C67989ABEDFE34 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		872F17C7441B59EAF8AA12E8 /* Localizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
+		89BA6FA4729231F6CB7C0053 /* Japanese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Japanese.swift; sourceTree = "<group>"; };
+		993D654517F13DEE614157EC /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
+		99DC5D6987A7C38471A9FCE5 /* Romaji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Romaji.swift; sourceTree = "<group>"; };
+		A3DD6A0002557D3827506E11 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		ABA8A63D5A3755F3D6297021 /* ContentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRepository.swift; sourceTree = "<group>"; };
+		BC5E9C992ACBFE2F13BDE26B /* GrammarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarView.swift; sourceTree = "<group>"; };
+		C74F6FBA5F9D71C59F6B9D5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C756A5DA35C3923BDF875A97 /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
+		CF769FC38BBF8208616AD937 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		E7EEEF12815219C1C2C50DFB /* ProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressStore.swift; sourceTree = "<group>"; };
+		E8ECB72B937607B6172FF17D /* ToriTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ToriTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5073C1C357028C50CB8C097 /* ToriUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToriUITests.swift; sourceTree = "<group>"; };
+		F6CC00C996E76C0057ED3A96 /* locales */ = {isa = PBXFileReference; lastKnownFileType = folder; name = locales; path = ../src/locales; sourceTree = SOURCE_ROOT; };
+		F704A1F980EFFEE1DFDE9D56 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		F7484B913A22203C9AFBD135 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		F8753059530ECAB810BB8A1E /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1749A323C03159D2DBEFEEC2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				F6CC00C996E76C0057ED3A96 /* locales */,
+				F4AC1D06D4E585B26487227D /* data */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		3651D69CA898DCC5CB393160 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				ABA8A63D5A3755F3D6297021 /* ContentRepository.swift */,
+				89BA6FA4729231F6CB7C0053 /* Japanese.swift */,
+				872F17C7441B59EAF8AA12E8 /* Localizer.swift */,
+				F7484B913A22203C9AFBD135 /* Models.swift */,
+				E7EEEF12815219C1C2C50DFB /* ProgressStore.swift */,
+				993D654517F13DEE614157EC /* ReviewModel.swift */,
+				99DC5D6987A7C38471A9FCE5 /* Romaji.swift */,
+				CF769FC38BBF8208616AD937 /* Search.swift */,
+				51D2C4272EDBEFB95695EA59 /* SettingsStore.swift */,
+				C756A5DA35C3923BDF875A97 /* Speaker.swift */,
+				22AAB600E6D0F0DD99301E58 /* SRS.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		6853C1117DD409FA4A574B9C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F704A1F980EFFEE1DFDE9D56 /* Components.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		69603C7C5623141F16BEE573 /* Tori */ = {
+			isa = PBXGroup;
+			children = (
+				C74F6FBA5F9D71C59F6B9D5C /* Assets.xcassets */,
+				2A1CA3A7CA5C5A6184D522B3 /* ToriApp.swift */,
+				6853C1117DD409FA4A574B9C /* Components */,
+				3651D69CA898DCC5CB393160 /* Core */,
+				F3F3B9FE43153FE99C99DF66 /* Theme */,
+				A3BF43177828616923474A38 /* Views */,
+			);
+			path = Tori;
+			sourceTree = "<group>";
+		};
+		87856E889E50F2B14A706C50 /* ToriUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F5073C1C357028C50CB8C097 /* ToriUITests.swift */,
+			);
+			path = ToriUITests;
+			sourceTree = "<group>";
+		};
+		9B6CEB70C94CB1C674AC8F86 /* ToriTests */ = {
+			isa = PBXGroup;
+			children = (
+				7934E0E37B5C80CB0FE40ED0 /* ContentTests.swift */,
+				19A312D5D0ECC0223E19F47B /* CoreTests.swift */,
+			);
+			path = ToriTests;
+			sourceTree = "<group>";
+		};
+		A3BF43177828616923474A38 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BC5E9C992ACBFE2F13BDE26B /* GrammarView.swift */,
+				A3DD6A0002557D3827506E11 /* HomeView.swift */,
+				6FA339362A1674ACDEC3C984 /* KanjiView.swift */,
+				5BB74D9924DDDD2D556DFE13 /* ReferenceViews.swift */,
+				F8753059530ECAB810BB8A1E /* ReviewView.swift */,
+				7F670E23B0C67989ABEDFE34 /* RootView.swift */,
+				1EF59E611D3829E623CBB330 /* VocabView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D58CDBB36E081B45141D6F35 /* Tori_phone */ = {
+			isa = PBXGroup;
+			children = (
+				1749A323C03159D2DBEFEEC2 /* src */,
+			);
+			name = Tori_phone;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		F3F3B9FE43153FE99C99DF66 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				4E3F0EE71DC1C6113DFA1E95 /* Theme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		F431FD695734B89060DC1290 = {
+			isa = PBXGroup;
+			children = (
+				69603C7C5623141F16BEE573 /* Tori */,
+				D58CDBB36E081B45141D6F35 /* Tori_phone */,
+				9B6CEB70C94CB1C674AC8F86 /* ToriTests */,
+				87856E889E50F2B14A706C50 /* ToriUITests */,
+				F9249DFA5AB359A35EC8A988 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F4AC1D06D4E585B26487227D /* data */ = {
+			isa = PBXGroup;
+			children = (
+				69DBBBB0D21DD544F345C300 /* n4 */,
+				6B3E9561C436AE8D5169AABA /* n5 */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		F9249DFA5AB359A35EC8A988 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A199FA8632548CABC2A1946 /* Tori.app */,
+				E8ECB72B937607B6172FF17D /* ToriTests.xctest */,
+				6B1E334730EFD8CD1BAE7B29 /* ToriUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AF6DCDD0E07F83A0AA3B6CEE /* Tori */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DDAD3ACDC5B656A726C7D0A0 /* Build configuration list for PBXNativeTarget "Tori" */;
+			buildPhases = (
+				EC84ABA73BFD42D740E61B6F /* Sources */,
+				CE12E81E76E36C8222DF0AE8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tori;
+			packageProductDependencies = (
+			);
+			productName = Tori;
+			productReference = 7A199FA8632548CABC2A1946 /* Tori.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E368F78BD72BCB39FFA40D7A /* ToriUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 709BB39EA6EC536AD1D3913B /* Build configuration list for PBXNativeTarget "ToriUITests" */;
+			buildPhases = (
+				6411CD3140C8215BE71135D1 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7278C874651358F26DD9310A /* PBXTargetDependency */,
+			);
+			name = ToriUITests;
+			packageProductDependencies = (
+			);
+			productName = ToriUITests;
+			productReference = 6B1E334730EFD8CD1BAE7B29 /* ToriUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		F8CD16CA8E9AF38DE4868AB8 /* ToriTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3EC71B085157F162A5F51EE1 /* Build configuration list for PBXNativeTarget "ToriTests" */;
+			buildPhases = (
+				1E405B07756A3C905CEC18A0 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				94F602A99F9B082E42810C0B /* PBXTargetDependency */,
+			);
+			name = ToriTests;
+			packageProductDependencies = (
+			);
+			productName = ToriTests;
+			productReference = E8ECB72B937607B6172FF17D /* ToriTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E188389952382A153401010B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					E368F78BD72BCB39FFA40D7A = {
+						TestTargetID = AF6DCDD0E07F83A0AA3B6CEE;
+					};
+				};
+			};
+			buildConfigurationList = CD9289F206EC972FB89F653E /* Build configuration list for PBXProject "Tori" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = F431FD695734B89060DC1290;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F9249DFA5AB359A35EC8A988 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF6DCDD0E07F83A0AA3B6CEE /* Tori */,
+				F8CD16CA8E9AF38DE4868AB8 /* ToriTests */,
+				E368F78BD72BCB39FFA40D7A /* ToriUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE12E81E76E36C8222DF0AE8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42243ED80C2653A8870C20BE /* Assets.xcassets in Resources */,
+				4099AEB65A63DE9EA9447801 /* locales in Resources */,
+				0F23A0430477AD29195433D2 /* n4 in Resources */,
+				05A7DA93B114B4F80A70268B /* n5 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1E405B07756A3C905CEC18A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3C8D3098ABF891CAE803D9F /* ContentTests.swift in Sources */,
+				D0F3BCA22E227744906A323C /* CoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6411CD3140C8215BE71135D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1519A14353802FC6DBB837B9 /* ToriUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC84ABA73BFD42D740E61B6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0CF3E17394EB886171965AC /* Components.swift in Sources */,
+				7224F0649FB9EF65DEE0A483 /* ContentRepository.swift in Sources */,
+				628605FC9BF9E46132FAE4DF /* GrammarView.swift in Sources */,
+				B774B6DA9B1D585C6729A1A6 /* HomeView.swift in Sources */,
+				F135DE97B91B995F3E59F308 /* Japanese.swift in Sources */,
+				EB1F1B4802108243F4D74FD1 /* KanjiView.swift in Sources */,
+				F50AE460C5886B03B47DD273 /* Localizer.swift in Sources */,
+				8E481C7A91A7F74BE26CA19F /* Models.swift in Sources */,
+				4013D792B3DD7FA7865260B3 /* ProgressStore.swift in Sources */,
+				AB2556B3E17B14A9E4FD17B9 /* ReferenceViews.swift in Sources */,
+				BC8A866583B7A3AAC8C2B966 /* ReviewModel.swift in Sources */,
+				2549F966EF724EB6A193354F /* ReviewView.swift in Sources */,
+				BF3B84710A5431F76489673A /* Romaji.swift in Sources */,
+				7C8FA0126BA96197E8BE9CB4 /* RootView.swift in Sources */,
+				1DC9F527DE4174145304D7A5 /* SRS.swift in Sources */,
+				F0F37B298068752512830C56 /* Search.swift in Sources */,
+				1B8D750455962C582A81070A /* SettingsStore.swift in Sources */,
+				7408FA296C7048297F8328CE /* Speaker.swift in Sources */,
+				AD8C3889F4100450892C4B84 /* Theme.swift in Sources */,
+				A82487F2B72E360381D53146 /* ToriApp.swift in Sources */,
+				E2488AA6E8EB7CE242F47D24 /* VocabView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7278C874651358F26DD9310A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF6DCDD0E07F83A0AA3B6CEE /* Tori */;
+			targetProxy = 8452A9922CB552EE4DD01846 /* PBXContainerItemProxy */;
+		};
+		94F602A99F9B082E42810C0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF6DCDD0E07F83A0AA3B6CEE /* Tori */;
+			targetProxy = 8425ECC077B33224D329C44A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		04CF0DB77F74F9D63547ED98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tori.app.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tori.app/Tori";
+			};
+			name = Release;
+		};
+		08ACDF7659E1F388683A1FBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Tori;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tori.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		664FD99474605192EAD70928 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Tori;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tori.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		75954E7D5D26B936E45B419A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.0.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		782FFE4DCE17552EA75EC01A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tori.app.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Tori;
+			};
+			name = Debug;
+		};
+		BDF291642BD7B53BD710C149 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.0.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		E467A566AF70FE9A82DA9D76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tori.app.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tori.app/Tori";
+			};
+			name = Debug;
+		};
+		F70F3C2245C9CC2970D7B782 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tori.app.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Tori;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3EC71B085157F162A5F51EE1 /* Build configuration list for PBXNativeTarget "ToriTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E467A566AF70FE9A82DA9D76 /* Debug */,
+				04CF0DB77F74F9D63547ED98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		709BB39EA6EC536AD1D3913B /* Build configuration list for PBXNativeTarget "ToriUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				782FFE4DCE17552EA75EC01A /* Debug */,
+				F70F3C2245C9CC2970D7B782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CD9289F206EC972FB89F653E /* Build configuration list for PBXProject "Tori" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75954E7D5D26B936E45B419A /* Debug */,
+				BDF291642BD7B53BD710C149 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DDAD3ACDC5B656A726C7D0A0 /* Build configuration list for PBXNativeTarget "Tori" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08ACDF7659E1F388683A1FBA /* Debug */,
+				664FD99474605192EAD70928 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E188389952382A153401010B /* Project object */;
+}
